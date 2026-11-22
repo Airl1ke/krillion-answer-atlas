@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         Krillion Helper
+// @name         Krillionare
 // @namespace    https://krillion.io/
-// @homepageURL  https://github.com/Airl1ke/krillion-helper
-// @supportURL   https://github.com/Airl1ke/krillion-helper/issues
-// @version      5.22
+// @homepageURL  https://github.com/Airl1ke/krillionare
+// @supportURL   https://github.com/Airl1ke/krillionare/issues
+// @version      5.23
 // @description  Learn and use locally saved Krillion answers in solo games and Puffer Party.
 // @match        https://krillion.io/*
 // @updateURL    none
@@ -347,7 +347,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   panel.id = 'kr-helper';
   panel.innerHTML = `
 
-    <header><strong>Krillion Helper</strong><button class="btn" data-a="toggle" aria-expanded="true">Collapse</button></header>
+    <header><strong>Krillionare</strong><button class="btn" data-a="toggle" aria-expanded="true">Collapse</button></header>
     <nav aria-label="Helper views">
       <button data-view="answers" aria-pressed="true">Answers</button>
       <button data-view="settings" aria-pressed="false">Settings</button>
@@ -496,7 +496,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   });
   applyLook();
   if (typeof GM_registerMenuCommand === 'function') {
-    GM_registerMenuCommand('Show Krillion Helper on screen', () => {
+    GM_registerMenuCommand('Show Krillionare on screen', () => {
       mountPanel();
       panel.classList.remove('hidden', 'collapsed');
       settings.pos = null;
@@ -512,7 +512,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   } catch (error) {
     $('.body').textContent = 'Saved answers could not be opened. Reload Krillion to retry. Your saves have been left in place.';
     $('nav').hidden = true;
-    console.error('Krillion Helper could not open saved answers', error);
+    console.error('Krillionare could not open saved answers', error);
     return;
   }
 
