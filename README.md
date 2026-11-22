@@ -26,6 +26,8 @@ Before switching, open **Memory → Export JSON** in the old panel to save your 
 
 Under **Answers**, enable **Party auto-answer** if you want the helper to play. Open **Party controls → Answering** for mimic typing, lowercase entry, and panic retries. **Rooms & queue** contains the rated and unrated queue options. You can adjust the reading pace and typing speed under **Settings**.
 
+Under **Party controls → Rooms & queue**, use **All queue actions** to turn on auto-join, queue after elimination, and queue after the game ends together. Click it again to turn all three off. A dash means only some actions are enabled. Your rated or unrated selection applies to all three.
+
 ## Credits
 
 This version builds on [YourAverageCow’s Krillion Helper](https://github.com/YourAverageCow/krillion-helper). The embedded VT323 font includes its license in the userscript. Offline word suggestions use the [ENABLE dictionary](https://github.com/dolph/dictionary) and compound spellings adapted from [Christina Gagné’s dataset](https://doi.org/10.17632/yyvb36r574.1) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

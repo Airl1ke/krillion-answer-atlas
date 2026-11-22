@@ -3,7 +3,7 @@
 // @namespace    https://krillion.io/
 // @homepageURL  https://github.com/Airl1ke/krillion-answer-atlas
 // @supportURL   https://github.com/Airl1ke/krillion-answer-atlas/issues
-// @version      5.24
+// @version      5.25
 // @description  Find Krillion answers, track rarity, and save game results in solo games and Puffer Party.
 // @match        https://krillion.io/*
 // @updateURL    none
@@ -256,6 +256,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     #kr-helper .setting-group label{display:flex;align-items:center;justify-content:space-between;gap:7px;min-height:1.38em;margin:2px 0;line-height:1.06}
     #kr-helper input[type=checkbox]{appearance:none;flex:none;position:relative;width:1.02em;height:1.02em;margin:0;border:1.5px solid #54869e;border-radius:1px;background:#0b2131}
     #kr-helper input[type=checkbox]:checked{border-color:var(--cyan)}
+    #kr-helper input[type=checkbox]:indeterminate::before{content:"";position:absolute;inset:40% 18%;background:var(--cyan)}
     #kr-helper input[type=checkbox]:checked::before{content:"";position:absolute;left:27%;top:5%;width:37%;height:66%;border:solid var(--cyan);border-width:0 2px 2px 0;transform:rotate(42deg)}
     #kr-helper input[role=switch]{width:1.75em}
     #kr-helper input[role=switch]::before,#kr-helper input[role=switch]:checked::before{content:"";position:absolute;inset:2px auto 2px 2px;
@@ -366,6 +367,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       <label class="quick switch-row" title="Send the next unused answer immediately after a confirmed wrong answer.">Panic retry after a miss <input type="checkbox" role="switch" data-s="panicRetry"></label>
       </fieldset>
       <fieldset><legend>Rooms &amp; queue</legend>
+      <label class="quick switch-row" title="Auto-join, queue after elimination, and queue after the game ends">All queue actions <input type="checkbox" class="queue-master"></label>
       <label class="quick switch-row">Auto-join 4–6 rooms <input type="checkbox" role="switch" data-s="autoJoin"></label>
       <label class="quick switch-row">Queue when eliminated <input type="checkbox" data-s="requeueRated"></label>
       <div class="choices">
@@ -472,6 +474,31 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     }
   }
 
+  const queueMaster = $('.queue-master');
+  function syncQueueMaster() {
+    const actions = [settings.autoJoin, settings.requeueRated, settings.afterGame === 'queue'];
+    queueMaster.checked = actions.every(Boolean);
+    queueMaster.indeterminate = !queueMaster.checked && actions.some(Boolean);
+  }
+  queueMaster.addEventListener('change', () => {
+    const enabled = queueMaster.checked;
+    settings.autoJoin = settings.requeueRated = enabled;
+    settings.afterGame = enabled ? 'queue' : 'off';
+    $('[data-s=autoJoin]').checked = enabled;
+    $('[data-s=requeueRated]').checked = enabled;
+    $('[data-s=afterGame]').value = settings.afterGame;
+    if (!enabled) {
+      queueDeadline = 0;
+      leavingRoom = '';
+      sizeClicked = lobbyJoinSent = false;
+      closedRoomLink = null;
+      tabValue(rejoinKey, null);
+      queueStatus('');
+    }
+    syncQueueMaster();
+    saveSettings();
+  });
+  syncQueueMaster();
   panel.querySelectorAll('[data-s]').forEach((el) => {
     const k = el.dataset.s;
     if (el.type === 'checkbox') el.checked = settings[k];
@@ -483,6 +510,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         return;
       }
       settings[k] = el.type === 'checkbox' ? el.checked : el.type === 'number' ? Number(el.value) : el.value;
+      if (['autoJoin', 'requeueRated', 'afterGame'].includes(k)) syncQueueMaster();
       saveSettings();
       if (k === 'autoJoin') {
         lobbyJoinSent = false;
