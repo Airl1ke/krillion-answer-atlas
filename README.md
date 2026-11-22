@@ -2,9 +2,9 @@
 
 Krillion Answer Atlas is a Tampermonkey userscript that shows answer suggestions for the current [Krillion](https://krillion.io/) prompt. Use it in solo games or Puffer Party to see rarity, pick an answer, and save the result in your browser.
 
-The downloadable **Krillion answer library** covers **10,298 prompts and 163,423 answer entries**. The panel labels confirmed rarity, estimates, and unrated entries so you can see what the game has verified.
+The downloadable **Krillion answer library** contains **163,423 saved answers**. The panel labels confirmed rarity, estimates, and unrated entries so you can see what the game has verified.
 
-[Install the userscript](https://raw.githubusercontent.com/Airl1ke/krillion-answer-atlas/main/krillion-answer-atlas.user.js) · [Download the answer library](https://raw.githubusercontent.com/Airl1ke/krillion-answer-atlas/main/krillion-10k-saved-answers.json)
+[Install the userscript](https://raw.githubusercontent.com/Airl1ke/krillion-answer-atlas/main/krillion-answer-atlas.user.js) · [Download 163,423 saved answers](https://raw.githubusercontent.com/Airl1ke/krillion-answer-atlas/main/krillion-163423-answers.json)
 
 ## Install with Tampermonkey
 
@@ -18,7 +18,7 @@ Before switching, open **Memory → Export JSON** in the old panel to save your 
 
 ## Import the answer library
 
-1. Save [krillion-10k-saved-answers.json](https://github.com/Airl1ke/krillion-answer-atlas/raw/refs/heads/main/krillion-10k-saved-answers.json) to your computer. If your browser shows the JSON as text, use **Save page as** and keep the `.json` extension.
+1. Save [krillion-163423-answers.json](https://github.com/Airl1ke/krillion-answer-atlas/raw/refs/heads/main/krillion-163423-answers.json) to your computer. If your browser shows the JSON as text, use **Save page as** and keep the `.json` extension.
 2. In the helper, open **Memory → Import JSON**, choose the file, and wait for **Import complete**. Importing merges the library with your existing answers.
 3. Open **Answers** during a round to see suggestions. New results are saved in Tampermonkey in that browser. Use **Memory → Export JSON** to back up your collection.
 
