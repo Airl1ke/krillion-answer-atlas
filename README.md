@@ -1,20 +1,24 @@
-# Krillionare
+# Krillion Answer Atlas
 
-A Tampermonkey userscript for [Krillion](https://krillion.io/) that suggests answers and learns from game results. The included library contains **10,298 prompts and 163,423 answer entries**. Some entries are guesses awaiting game confirmation.
+Krillion Answer Atlas is a Tampermonkey userscript that shows answer suggestions for the current [Krillion](https://krillion.io/) prompt. Use it in solo games or Puffer Party to see rarity, pick an answer, and save the result in your browser.
+
+The downloadable **Krillion answer library** covers **10,298 prompts and 163,423 answer entries**. The panel labels confirmed rarity, estimates, and unrated entries so you can see what the game has verified.
+
+[Install the userscript](https://raw.githubusercontent.com/Airl1ke/krillion-answer-atlas/main/krillion-answer-atlas.user.js) · [Download the answer library](https://raw.githubusercontent.com/Airl1ke/krillion-answer-atlas/main/krillion-10k-saved-answers.json)
 
 ## Install with Tampermonkey
 
 1. Install and enable [Tampermonkey](https://www.tampermonkey.net/) in the browser you use to play.
-2. Open [Install Krillionare](https://raw.githubusercontent.com/Airl1ke/krillionare/main/krillionare.user.js) and choose **Install** or **Update** in Tampermonkey.
-3. Open or refresh [krillion.io](https://krillion.io/). Look for the **Krillionare** panel. If it is hidden, open the Tampermonkey menu on the game tab and select **Show Krillionare on screen**.
+2. Open [Install Krillion Answer Atlas](https://raw.githubusercontent.com/Airl1ke/krillion-answer-atlas/main/krillion-answer-atlas.user.js) and choose **Install** or **Update** in Tampermonkey.
+3. Open or refresh [krillion.io](https://krillion.io/). Look for the **Krillion Answer Atlas** panel. If it is hidden, open the Tampermonkey menu on the game tab and select **Show Krillion Answer Atlas on screen**.
 
-## Moving from Krillion Helper
+## Moving from Krillionare or Krillion Helper
 
-Before switching, open **Memory → Export JSON** in the old panel to save your personal collection. Disable the old script in Tampermonkey, install Krillionare, then open **Memory → Import JSON** in Krillionare and select your export. Review your preferences in **Settings** and **Party controls**.
+Before switching, open **Memory → Export JSON** in the old panel to save your personal collection. Disable the old script in Tampermonkey, install Krillion Answer Atlas, then open **Memory → Import JSON** in Krillion Answer Atlas and select your export. Review your preferences in **Settings** and **Party controls**.
 
 ## Import the answer library
 
-1. Save [krillion-10k-saved-answers.json](https://github.com/Airl1ke/krillionare/raw/refs/heads/main/krillion-10k-saved-answers.json) to your computer. If your browser shows the JSON as text, use **Save page as** and keep the `.json` extension.
+1. Save [krillion-10k-saved-answers.json](https://github.com/Airl1ke/krillion-answer-atlas/raw/refs/heads/main/krillion-10k-saved-answers.json) to your computer. If your browser shows the JSON as text, use **Save page as** and keep the `.json` extension.
 2. In the helper, open **Memory → Import JSON**, choose the file, and wait for **Import complete**. Importing merges the library with your existing answers.
 3. Open **Answers** during a round to see suggestions. New results are saved in Tampermonkey in that browser. Use **Memory → Export JSON** to back up your collection.
 
